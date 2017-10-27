@@ -1,0 +1,113 @@
+{
+  "name": "mixiner",
+  "title": "JS & TS mixins",
+  "description": "JS & TS mixins writed in TypeScript",
+  "version": "1.0.0",
+  "main": "dist/mixiner.js",
+  "homepage": "https://github.com/shvabuk/mixiner",
+  "author": {
+    "name": "Shvab Ostap",
+    "email": "shvabuk@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shvabuk/mixiner"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/shvabuk/mixiner/issues"
+  },
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "scripts": {
+    "dev": "nodemon --watch webpack.config.js ./node_modules/.bin/webpack-dev-server --env=dev",
+    "build": "gulp build",
+    "build:test": "gulp build-test",
+    "test": "npm run build:test && nyc ./node_modules/mocha/bin/mocha ./test/test-*.js",
+    "test:karma": "gulp test-karma",
+    "lint": "tslint -p .",
+    "lint:fix": "tslint -p . --fix",
+    "watch": "gulp",
+    "watch:test": "gulp watch-test",
+    "watch:build": "gulp watch",
+    "debug": "node --inspect --debug-brk dist/mixiner.js"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-minify": "^0.2.0",
+    "babel-plugin-transform-object-assign": "^6.22.0",
+    "babel-preset-es2015": "^6.24.1",
+    "benchmark": "^2.1.4",
+    "chai": "^4.1.2",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.1.1",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-prettier": "^2.1.1",
+    "eslint-plugin-react": "^7.1.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0",
+    "gulp-buble": "^0.8.0",
+    "gulp-gzip": "^1.4.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.6.1",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-typescript": "^3.2.1",
+    "gulp-uglify": "^3.0.0",
+    "gulp-watch": "^4.3.11",
+    "html-webpack-plugin": "^2.30.1",
+    "istanbul": "^0.4.5",
+    "karma": "^1.7.1",
+    "karma-babel-preprocessor": "^7.0.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-commonjs": "^1.0.0",
+    "karma-coverage": "^1.1.1",
+    "karma-edge-launcher": "^0.4.2",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-ie-launcher": "^1.0.0",
+    "karma-mocha": "^1.3.0",
+    "karma-opera-launcher": "^1.0.0",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-safari-launcher": "^1.0.0",
+    "lodash": "^4.17.4",
+    "mocha": "^4.0.1",
+    "nodemon": "^1.12.1",
+    "nyc": "^11.2.1",
+    "prettier": "^1.7.4",
+    "run-sequence": "^2.2.0",
+    "through2": "^2.0.3",
+    "ts-loader": "^3.0.5",
+    "tslint": "^5.6.0",
+    "tslint-config-airbnb": "^5.2.1",
+    "tslint-config-prettier": "^1.3.0",
+    "tslint-ionic-rules": "0.0.11",
+    "vue": "^2.4.4",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
+  },
+  "dependencies": {
+    "@types/node": "^8.0.32",
+    "typescript": "^2.5.3"
+  },
+  "nyc": {
+    "include": [
+      "es6/mixiner.js",
+      "dist/mixiner.js"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "cache": true,
+    "all": true,
+    "report-dir": "./test/coverage/nyc"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "printWidth": 100,
+    "tabWidth": 2
+  }
+}
