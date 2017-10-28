@@ -27,7 +27,7 @@
   "scripts": {
     "build": "gulp build",
     "build:test": "gulp build-test",
-    "codecov": "cat ./test/coverage/node/coverage-final.json | codecov",
+    "codecov": "cat ./test/coverage/nyc/coverage-final.json | codecov",
     "test": "npm run build:test && nyc ./node_modules/mocha/bin/mocha ./test/test-*.js && npm run codecov",
     "test:karma": "gulp test-karma",
     "lint": "tslint -p .",
