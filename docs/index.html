@@ -414,14 +414,16 @@ donald.speak(); // &apos;quack&apos;
 <pre><code class="lang-javascript">// default configuration
 interf.
   config: {
-    conflict: false,
-    resolve: (target, mixin, propertyName) =&gt; {
+    define: (target, mixin, propertyName) =&gt; {
       Object.defineProperty(
         target,
         propertyName,
         Object.getOwnPropertyDescriptor(mixin, propertyName)
       );
     },
+    resolve: ({ target, mixin, options, type, propertyName }) =&gt; {
+      mixiner.config.define(target, mixin, propertyName);
+    }
     ignoreProtoProps: [
       &apos;constructor&apos;,
       &apos;apply&apos;,
@@ -497,7 +499,7 @@ interf.
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Read Me","level":"1.1","depth":1,"next":{"title":"Performance","level":"1.2","depth":1,"path":"performance.md","ref":"performance.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-highlight","-livereload","github","anchorjs","ga","edit-link","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/shvabuk/mixiner"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"ga":{"configuration":"auto","token":"UA-26894117-2"},"sharing":{"facebook":true,"twitter":true,"google":true,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper","vk"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/shvabuk/mixiner/tree/gh-pages/_docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchorjs":{}},"theme":"default","author":"Shvab Ostap","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Mixiner","gitbook":"3.2.3"},"file":{"path":"README.md","mtime":"2017-10-28T13:42:03.346Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-28T19:00:57.716Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Read Me","level":"1.1","depth":1,"next":{"title":"Performance","level":"1.2","depth":1,"path":"performance.md","ref":"performance.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-highlight","-livereload","github","anchorjs","ga","edit-link","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/shvabuk/mixiner"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"ga":{"configuration":"auto","token":"UA-26894117-2"},"sharing":{"facebook":true,"twitter":true,"google":true,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper","vk"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/shvabuk/mixiner/tree/gh-pages/_docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchorjs":{}},"theme":"default","author":"Shvab Ostap","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Mixiner","gitbook":"3.2.3"},"file":{"path":"README.md","mtime":"2017-10-28T21:17:16.608Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-28T21:23:04.477Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
