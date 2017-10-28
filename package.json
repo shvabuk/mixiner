@@ -13,23 +13,25 @@
     "type": "git",
     "url": "https://github.com/shvabuk/mixiner"
   },
-  "keywords": [],
+  "keywords": [
+    "mixin",
+    "mixiner",
+    "javascript",
+    "typescript"
+  ],
   "bugs": {
     "url": "https://github.com/shvabuk/mixiner/issues"
   },
   "license": "MIT",
   "readmeFilename": "README.md",
   "scripts": {
-    "dev": "nodemon --watch webpack.config.js ./node_modules/.bin/webpack-dev-server --env=dev",
     "build": "gulp build",
     "build:test": "gulp build-test",
-    "test": "npm run build:test && nyc ./node_modules/mocha/bin/mocha ./test/test-*.js",
+    "codecov": "cat ./test/coverage/node/coverage-final.json | codecov",
+    "test": "npm run build:test && nyc ./node_modules/mocha/bin/mocha ./test/test-*.js && npm run codecov",
     "test:karma": "gulp test-karma",
     "lint": "tslint -p .",
-    "lint:fix": "tslint -p . --fix",
     "watch": "gulp",
-    "watch:test": "gulp watch-test",
-    "watch:build": "gulp watch",
     "debug": "node --inspect --debug-brk dist/mixiner.js"
   },
   "devDependencies": {
@@ -90,7 +92,8 @@
     ],
     "reporter": [
       "lcov",
-      "text-summary"
+      "text-summary",
+      "json"
     ],
     "cache": true,
     "all": true,

@@ -30,4 +30,5 @@ package-lock.json
 
 /test/tmp
 /test/coverage
+/_docs/
 protected
