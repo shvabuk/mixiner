@@ -49,8 +49,8 @@ donald.speak(); // 'quack'
 ```
 
 ## Download
-* <i class="fa fa-download" aria-hidden="true"></i> [Main build](https://raw.githubusercontent.com/om/shvabuk/mixiner/master/dist/mixiner.js) ([~1.3kB gzipped](https://raw.githubusercontent.com/om/shvabuk/mixiner/master/dist/mixiner.min.js))
-* <i class="fa fa-download" aria-hidden="true"></i> [ES2015 modules build](https://raw.githubusercontent.com/shvabuk/mixiner/master/es/mixiner.js) ([~1.2kB gzipped](https://raw.githubusercontent.com/om/shvabuk/mixiner/master/es/mixiner.min.js))
+* <i class="fa fa-download" aria-hidden="true"></i> [Main build](https://raw.githubusercontent.com/shvabuk/mixiner/master/dist/mixiner.js) ([~1.3kB gzipped](https://raw.githubusercontent.com/shvabuk/mixiner/master/dist/mixiner.min.js))
+* <i class="fa fa-download" aria-hidden="true"></i> [ES2015 modules build](https://raw.githubusercontent.com/shvabuk/mixiner/master/es/mixiner.js) ([~1.2kB gzipped](https://raw.githubusercontent.com/shvabuk/mixiner/master/es/mixiner.min.js))
 * <i class="fa fa-cloud-download" aria-hidden="true"></i> [CDN jsdelivr](https://cdn.jsdelivr.net/npm/mixiner)
 * <i class="fa fa-cloud-download" aria-hidden="true"></i> [CDN unpkg](https://unpkg.com/mixiner/dist/mixiner.js)
 
