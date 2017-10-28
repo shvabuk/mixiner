@@ -1,0 +1,40 @@
+{
+  "name": "mixiner-github-pages",
+  "version": "1.0.0",
+  "description": "Mixiner github pages",
+  "author": {
+    "name": "Shvab Ostap",
+    "email": "shvabuk@gmail.com"
+  },
+  "scripts": {
+    "docs:prepare": "gitbook install",
+    "docs:watch": "npm run docs:prepare && gitbook serve . ../docs --port 4001"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shvabuk/mixiner.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shvabuk/mixiner/issues"
+  },
+  "homepage": "https://github.com/shvabuk/mixiner/tree/gh-pages/docs",
+  "dependencies": {
+    "gitbook-plugin-anchorjs": "^1.1.1",
+    "gitbook-plugin-edit-link": "^2.0.2",
+    "gitbook-plugin-ga": "^1.0.1",
+    "gitbook-plugin-github": "^2.0.0",
+    "gitbook-plugin-theme-default": "^1.0.7"
+  },
+  "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.1.1",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-prettier": "^2.1.1",
+    "eslint-plugin-react": "^7.1.0",
+    "gitbook-cli": "^2.3.0",
+    "prettier": "^1.4.4"
+  }
+}

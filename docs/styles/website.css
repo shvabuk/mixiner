@@ -1,0 +1,95 @@
+.book.font-family-0, .book.font-family-1 {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.font-settings .buttons:nth-child(3) {
+    display: none;
+}
+
+/*.book-summary nav>ul.summary>li:nth-child(1), .book-summary nav>ul.summary>li:nth-child(2) {
+    display: none;
+}*/
+
+.book-summary  nav, .markdown-section code, .markdown-section pre {
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+.markdown-section hr {
+    height: 2px;
+    margin: 0;
+}
+
+.markdown-section blockquote {
+    padding: 10px 15px 0;
+    color: inherit;
+}
+
+.markdown-section pre {
+    padding: 0;
+}
+
+.markdown-section pre>code {
+    font-size: 1em;
+}
+
+.hljs, .hljs-tag, .hljs-subst {
+    color: #f8f8f2 !important;
+}
+.hljs {
+    background: #23241f !important;
+    display: block !important;
+    padding: .85em 1em !important;
+}
+
+.sidebar-link {
+    padding: 10px 15px;
+}
+
+.logo, .logo a {
+    border-radius: 7px;
+    border-radius: .3em;
+    background: #518a07;
+    color: #f5f5f5;
+    padding: .6% 1% .6% 2.6%;
+    font-family: 'Noto Sans', 'Ubuntu', sans-serif;
+    font-weight: bold;
+
+    letter-spacing: .2em;
+
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+.logo a {
+    padding: 0;
+}
+
+.sidebar-link .logo {
+    font-size: 24px;
+}
+
+.sidebar-link .logo:hover, .logo a:hover , .sidebar-link .logo:focus, .logo a:focus {
+    color: #89c9ff;
+    text-decoration: none;
+}
+
+.sidebar-link .logo:focus, .logo a:focus {
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+
+.github-link {
+    font-size: 230%;
+    opacity: .5;
+    color: #333;
+}
+
+.book.color-theme-1 .github-link, .book.color-theme-2 .github-link {
+    color: #f4f4f5;
+}
+
+.github-link:hover, .github-link:focus {
+    opacity: 1;
+}

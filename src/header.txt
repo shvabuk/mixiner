@@ -1,6 +1,0 @@
-/**
- * @license
- * Mixiner <https://shvabuk.github.io/mixiner>
- * Released under MIT license <https://shvabuk.github.io/mixiner/LICENSE.txt>
- * Copyright Shvab Ostap
- */

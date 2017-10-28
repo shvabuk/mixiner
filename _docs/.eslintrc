@@ -1,0 +1,37 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 2015,
+        "sourceType": "module"
+    },
+    "globals": {
+        "define": true,
+        "$VERSION$": true,
+        "$VERSION_COUNT$": true,
+    },
+    "env": {
+        "browser": true,
+        "node": true
+    },
+    "extends": ["airbnb", "prettier"],
+    "plugins": [
+        "import",
+        "prettier"
+    ],
+    "rules": {
+        // prettier settings
+        "prettier/prettier": ["error", {
+            "singleQuote": true,
+            "trailingComma": "es5",
+            "printWidth": 100,
+            "tabWidth": 2,
+        }],
+        "no-underscore-dangle": ["warn", { "allowAfterThis": true }], // use it for __interfaces_, __mixins_
+        "prefer-rest-params": "warn", // usualy will not need arguments as array, also minimize code and speedup
+        "no-plusplus": "warn", // while(i--) loop faster than while(i -= 1) or any array buildin loops [].map(), [].find() etc.
+        "no-labels": "warn", // usefull due to performance reason and code minification
+        "no-restricted-syntax": "warn", // usefull due to performance reason and code minification
+        "no-continue": "warn", // sometimes are better than if`s chain
+        "no-param-reassign": "warn", // usefull to code minification
+        "no-proto": "warn", // used for polyfill, some old Opera versions may use __proto__
+    }
+}

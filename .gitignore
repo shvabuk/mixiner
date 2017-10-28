@@ -25,9 +25,8 @@ nbproject
 .~lock.*
 .buildpath
 composer.lock
-package-lock.json
-.nyc_output/
 
-/test/tmp
-/test/coverage
-protected
+
+/test
+/_docs/node_modules
+/.nyc_output

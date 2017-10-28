@@ -1,9 +1,0 @@
-/node_modules
-/test
-/docs
-
-.eslintrc
-.gitignore
-.travis.yml
-gulpfile.js
-karma.conf.js

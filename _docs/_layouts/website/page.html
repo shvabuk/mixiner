@@ -1,0 +1,37 @@
+{% extends template.self %}
+
+{% block style %}
+    {{ super() }}
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700|Ubuntu:400,400i,700,700i|Ubuntu+Mono" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script>
+$(function() {
+  gitbook.events.on('page.change', function() {
+    $('[class^="lang-"]').each(function() {
+      hljs.highlightBlock($(this)[0]);
+    });
+  });
+});
+</script>
+
+{% endblock %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="shortcut icon" href="https://shvabuk.github.io/mixiner/assets/favicon.ico" type="image/x-icon">
+    <link rel="bookmark" href="https://shvabuk.github.io/mixiner/assets/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="https://shvabuk.github.io/mixiner/assets/apple-touch-icon.png">
+{% endblock %}
+
+{% block book_sidebar %}
+    <div class="sidebar-link">
+        <a href="https://shvabuk.github.io/mixiner" target="_blank" class="logo">MIXINER</a>
+        <a href="https://github.com/shvabuk/mixiner" target="_blank" class="btn pull-right github-link" aria-label="GitHub"><i class="fa fa-github"></i></a>
+    </div>
+    
+    <div class="divider"></div>
+    {{ super() }}
+{% endblock %}
+

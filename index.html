@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <meta name="description" content="Mixiner: A library, that implement mixins in javascript classes">
+
+    <meta content="Shvab Ostap" name="author">
+
+    <title>Mixiner</title>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css?v=1.0.0">
+
+    <link href="assets/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="assets/favicon.ico" rel="icon">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+</head>
+
+<body>
+    <div class="nav-main">
+        <div class="container">
+            <div class="nav-lists">
+                <a class="nav-home logo" href="/mixiner">
+                    MIXINER
+                </a>
+                <ul class="nav-site nav-site-internal">
+                    <li class="nav-site-element">
+                        <a class="nav-site-link" href="docs">API Docs</a>
+                    </li>
+                </ul>
+                <ul class="nav-site nav-site-external">
+                    <li class="nav-site-element">
+                        <a class="nav-site-link" href="https://github.com/shvabuk/mixiner">
+                            GitHub
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="hero">
+        <div class="container">
+            <div class="row">
+                <h1 class="logo">MIXINER</h1>
+                <p>A LIBRARY, THAT IMPLEMENT MIXINS IN JAVASCRIPT CLASSES</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+            <p class="text-center">
+                <a href="https://gitter.im/soft-support/mixiner" target="_blank">
+                    <img src="https://img.shields.io/gitter/room/soft-support/mixiner.svg?style=flat-square" alt="Join the chat at https://gitter.im/soft-support/mixiner">
+                </a>
+                <a href="https://www.npmjs.com/package/mixiner" target="_blank">
+                    <img src="https://img.shields.io/npm/v/mixiner.svg?style=flat-square" alt="npm version">
+                </a>
+                <a href="https://codecov.io/gh/shvabuk/mixiner" target="_blank">
+                    <img src="https://codecov.io/gh/shvabuk/mixiner/branch/master/graph/badge.svg" alt="codecov">
+                </a>
+                <a href="https://travis-ci.org/shvabuk/mixiner" target="_blank">
+                    <img src="https://travis-ci.org/shvabuk/mixiner.svg?branch=master" alt="Build status">
+                </a>
+            </p>
+        </div>
+
+        <div class="row">
+
+            <div class="col">
+                <div class="col-wrap">
+                    <h2>Download</h2>
+                    <p>
+                        <ul>
+                            <li>
+                                <i class="fa fa-download" aria-hidden="true"></i>
+                                <a href="https://raw.githubusercontent.com/shvabuk/mixiner/master/dist/mixiner.js">Main build</a>
+                                (<a href="https://raw.githubusercontent.com/shvabuk/mixiner/master/dist/mixiner.min.js">~1.3kB gzipped</a>)
+                            </li>
+                            <li>
+                                <i class="fa fa-download" aria-hidden="true"></i>
+                                <a href="https://raw.githubusercontent.com/shvabuk/mixiner/master/es/mixiner.js">ES2015 modules build</a>
+                                (<a href="https://raw.githubusercontent.com/shvabuk/mixiner/master/dist/mixiner.min.js">~1.2kB gzipped</a>)
+                            </li>
+
+                            <li>
+                                <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                                <a href="https://cdn.jsdelivr.net/npm/mixiner">CDN jsdelivr</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-cloud-download" aria-hidden="true"></i>
+                                <a href="https://unpkg.com/mixiner/dist/mixiner.js">CDN unpkg</a>
+                            </li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="col-wrap">
+                    <h2>What is
+                        <span class="noto-sans">MIXINER</span>?</h2>
+
+                    <p>
+                        Mixiner is
+                        <a href="docs/performance.html">fast</a> and small javascript library.
+                        <br> It makes possible to copy static and non static properties (and methods) from one class to other 
+                    </p>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="col-wrap">
+                    <h2>Installation</h2>
+
+                    <p>Using npm:</p>
+                    <pre><code class="shell">$ npm install --save mixiner</code></pre>
+
+                    <p>TypeScript:</p>
+                    <pre><code class="javascript">import mixiner from 'mixiner';</code></pre>
+
+                    <p>Node.js / CommonJS:</p>
+                    <pre><code class="javascript">const mixiner = require('mixiner');</code></pre>
+
+                    <p>ES2015 / TypeScript:</p>
+                    <pre><code class="javascript">import mixiner from 'mixiner/es/mixiner';</code></pre>
+                </div>
+            </div>
+
+
+            <div class="col">
+                <div class="col-wrap">
+                    <h2>Support</h2>
+                    <p>
+                        Tested in:
+                        <ul>
+                            <li>
+                                <i class="fa fa-chrome" aria-hidden="true"></i> Chrome 62 - 63</li>
+                            <li>
+                                <i class="fa fa-firefox" aria-hidden="true"></i> Firefox 56</li>
+                            <li>
+                                <i class="fa fa-internet-explorer" aria-hidden="true"></i>
+                                IE 11 (with babel transform)</a>
+                            </li>
+                            <!--<li><i class="fa fa-edge" aria-hidden="true"></i> Edge TODO</li>-->
+                            <li>
+                                <i class="fa fa-safari" aria-hidden="true"></i> Safari 5.1.7 (with babel transform)</li>
+                            <!--<li>
+                                <i class="fa fa-opera" aria-hidden="true"></i> Opera 45</li>-->
+                            <li>
+                                <i class="fa fa-server" aria-hidden="true"></i> Node.js 8</li>
+                            <li>
+                                <i class="fa fa-server" aria-hidden="true"></i> PhantomJS 2.1.14 (with babel transform)</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+
+
+
+
+            <div class="col col-col2">
+                    <div class="col-wrap">
+                        <h2>Basic TypeScript usage</h2>
+    
+                        <pre><code class="typescript">// create mixin
+class SpeackableMixin {
+    protected sound: string;
+    public speak(): string {
+        return this.sound;
+    }
+}
+// implement SpeackableMixin
+class Duck extends mixiner.mix(SpeackableMixin) {
+    protected sound = 'quack';
+}
+// create instance
+const donald = new Duck();
+// test instance
+donald.speak(); // 'quack' without syntax error</code></pre>
+                        <p>
+                            Visit
+                            <a href="docs">Api Docs</a> for more information.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col col-col2">
+                    <div class="col-wrap">
+                        <h2>Basic JS usage</h2>
+    
+                        <pre><code class="javascript">// create mixin
+class SpeackableMixin {
+    speak() {
+        return this.sound;
+    }
+}
+// implement SpeackableMixin
+class Duck extends mixiner.mix(SpeackableMixin) {
+    constructor() {
+        super();
+        this.sound = 'quack';
+    }
+}
+// create instance
+const donald = new Duck();
+// test instance
+donald.speak(); // 'quack'</code></pre>
+                        <p>
+                            Visit
+                            <a href="docs">Api Docs</a> for more information.
+                        </p>
+                    </div>
+                </div>
+
+
+
+            <div class="col">
+                <div class="col-wrap">
+                    <h2>License</h2>
+                    <p>
+                        Mixiner is released under the
+                        <a href="https://raw.githubusercontent.com/shvabuk/mixiner/master/LICENSE.txt">MIT license</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="container footer">Site made with
+        <i class="fa fa-coffee" aria-hidden="true"></i> by
+        <a href="https://github.com/shvabuk">Shvab Ostap</a>
+    </footer>
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+    <!-- Google Analytics -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)        
+}, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-26894117-2', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+
+</body>
+
+</html>
