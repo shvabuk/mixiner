@@ -1,4 +1,11 @@
-"use strict";
+/**
+ * @license
+ * Mixiner <https://shvabuk.github.io/mixiner>
+ * Released under MIT license <https://shvabuk.github.io/mixiner/LICENSE.txt>
+ * Copyright Shvab Ostap
+ */
+
+;"use strict";
 const VERSION = '1.0.0';
 // storage of mixins, defined in constructor._mixins_
 export class Mixins {

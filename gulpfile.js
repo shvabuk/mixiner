@@ -85,16 +85,19 @@ gulp.task('ts', () =>
     .pipe(gulp.dest('dist'))
 );
 
-gulp.task('es-modules', ['ts'], () =>
-  gulp
+gulp.task('es-modules', ['ts'], () => {
+  const header = fs.readFileSync('./src/header.txt', 'utf8');
+
+  return gulp
     .src('dist/mixiner.js')
     .pipe(replace(/\/\*\s*export\s*\*\/[\s\r\n]*/gm, `export `))
     .pipe(
       replace(/\/\*\s*export\s*default\s*mixiner;\s*\*\/[\s\r\n]*/gm, `export default mixiner;\n`)
     )
     .pipe(replace(/^module.exports[^.].*/gm, `\n`))
+    .pipe(replace(/^/, `${header}\n;`))
     .pipe(gulp.dest('es'))
-);
+});
 
 gulp.task('umd-fix', ['es-modules'], () => {
   const header = fs.readFileSync('./src/header.txt', 'utf8');
