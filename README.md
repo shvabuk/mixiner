@@ -3,13 +3,10 @@
 Mixiner is [fast](performance.md) and small javascript library.
 It makes possible to copy static and non static properties (and methods) from one class to other.
 
-/**
- * [![Join the chat at https://gitter.im/interf/Lobby](https://img.shields.io/gitter/room/shvabuk/Lobby.svg?style=flat-square)](https://gitter.im/interf/Lobby)
- * [![npm version](https://img.shields.io/npm/v/interf.svg?style=flat-square)](https://www.npmjs.com/package/interf)
- * [![codecov](https://codecov.io/gh/shvabuk/interf/branch/master/graph/badge.svg)](https://codecov.io/gh/shvabuk/interf)
- * [![Build Status](https://travis-ci.org/shvabuk/interf.svg?branch=master)](https://travis-ci.org/shvabuk/interf)
- * [![devDependencies Status](https://david-dm.org/shvabuk/interf/dev-status.svg)](https://david-dm.org/shvabuk/interf?type=dev)
- */
+[![Join the chat at https://gitter.im/soft-support/mixiner](https://img.shields.io/gitter/room/soft-support/mixiner.svg?style=flat-square)](https://gitter.im/soft-support/mixiner)
+[![npm version](https://img.shields.io/npm/v/mixiner.svg?style=flat-square)](https://www.npmjs.com/package/mixiner)
+[![codecov](https://codecov.io/gh/shvabuk/mixiner/branch/master/graph/badge.svg)](https://codecov.io/gh/shvabuk/mixiner)
+[![Build Status](https://travis-ci.org/shvabuk/mixiner.svg?branch=master)](https://travis-ci.org/shvabuk/mixiner)
 
 ## Basic TypeScript usage
 ``` javascript

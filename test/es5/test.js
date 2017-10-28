@@ -426,8 +426,8 @@ exports.tests = function (mixiner, assert) {
         });
         describe('mixiner.config.conflict', function () {
             it('mixin prop conflicts', function () {
-                var oldConflict = mixiner.config.conflict;
-                mixiner.config.conflict = function (_ref) {
+                var oldResolve = mixiner.config.resolve;
+                mixiner.config.resolve = function (_ref) {
                     var target = _ref.target,
                         mixin = _ref.mixin,
                         options = _ref.options,
@@ -453,9 +453,17 @@ exports.tests = function (mixiner, assert) {
                     return MClass;
                 }(mixiner.mix(Mixin1, Mixin2));
 
-                mixiner.config.conflict = oldConflict;
+                mixiner.config.resolve = oldResolve;
             });
         });
+        // TODO: change any to interface
+        var resolve = function resolve(_ref2) {
+            var target = _ref2.target,
+                mixin = _ref2.mixin,
+                propertyName = _ref2.propertyName;
+
+            target[propertyName] = mixin[propertyName];
+        };
         describe('mixiner.options', function () {
             var OMClass = function (_mixiner$options$mix) {
                 _inherits(OMClass, _mixiner$options$mix);
@@ -467,7 +475,7 @@ exports.tests = function (mixiner, assert) {
                 }
 
                 return OMClass;
-            }(mixiner.options({ conflict: null }).mix(Mixin1, Mixin2));
+            }(mixiner.options({ resolve: resolve }).mix(Mixin1, Mixin2));
 
             var omObj = new OMClass();
             it('options mix', function () {
@@ -498,7 +506,7 @@ exports.tests = function (mixiner, assert) {
                 }
 
                 return OEClass;
-            }(mixiner.options({ conflict: null }).extend(Parent, Mixin1, Mixin2));
+            }(mixiner.options({ resolve: resolve }).extend(Parent, Mixin1, Mixin2));
 
             var oeObj = new OEClass();
             it('options extend', function () {

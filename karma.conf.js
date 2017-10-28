@@ -29,8 +29,6 @@ module.exports = config => {
       'karma-mocha',
       'karma-commonjs',
       'karma-chai',
-      // TODO: delete babel
-      'karma-babel-preprocessor',
       'karma-coverage',
       'karma-chrome-launcher',
       'karma-firefox-launcher',
@@ -50,18 +48,9 @@ module.exports = config => {
     },
     reporters: ['progress', 'coverage'],
     preprocessors: {
-      // 'src/**/*.js': ['babel'],
       'test/**/*.js': ['commonjs'],
       'dist/**/*.js': ['coverage'],
       'es6/**/*.js': ['coverage'],
-    },
-    babelPreprocessor: {
-      options: {
-        presets: [['es2015', { modules: 'umd' }]],
-        sourceMap: false,
-      },
-      filename: file => file.originalPath.replace(/\.js$/, '.js'),
-      sourceFileName: file => file.originalPath,
     },
     coverageReporter: {
       type: 'lcov',

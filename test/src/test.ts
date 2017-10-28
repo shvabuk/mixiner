@@ -341,9 +341,9 @@ export const tests = (mixiner: interfaces.IMixiner, assert: any) => {
 
     describe('mixiner.config.conflict', () => {
       it('mixin prop conflicts', () => {
-        const oldConflict = mixiner.config.conflict;
+        const oldResolve = mixiner.config.resolve;
 
-        mixiner.config.conflict = ({
+        mixiner.config.resolve = ({
           target,
           mixin,
           options,
@@ -359,12 +359,17 @@ export const tests = (mixiner: interfaces.IMixiner, assert: any) => {
 
         class MClass extends mixiner.mix(Mixin1, Mixin2) {}
 
-        mixiner.config.conflict = oldConflict;
+        mixiner.config.resolve = oldResolve;
       });
     });
 
+    // TODO: change any to interface
+    const resolve = ({ target, mixin, /* options, type, */ propertyName }: any) => {
+      target[propertyName] = mixin[propertyName];
+    };
+
     describe('mixiner.options', () => {
-      class OMClass extends mixiner.options({ conflict: null }).mix(Mixin1, Mixin2) {}
+      class OMClass extends mixiner.options({ resolve }).mix(Mixin1, Mixin2) {}
       const omObj = new OMClass();
 
       it('options mix', () => {
@@ -386,7 +391,7 @@ export const tests = (mixiner: interfaces.IMixiner, assert: any) => {
         assert.strictEqual(2, omObj.method2());
       });
 
-      class OEClass extends mixiner.options({ conflict: null }).extend(Parent, Mixin1, Mixin2) {}
+      class OEClass extends mixiner.options({ resolve }).extend(Parent, Mixin1, Mixin2) {}
       const oeObj = new OEClass();
 
       it('options extend', () => {
