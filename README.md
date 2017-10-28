@@ -91,14 +91,16 @@ import mixiner from 'mixiner/es/mixiner';
 // default configuration
 interf.
   config: {
-    conflict: false,
-    resolve: (target, mixin, propertyName) => {
+    define: (target, mixin, propertyName) => {
       Object.defineProperty(
         target,
         propertyName,
         Object.getOwnPropertyDescriptor(mixin, propertyName)
       );
     },
+    resolve: ({ target, mixin, options, type, propertyName }) => {
+      mixiner.config.define(target, mixin, propertyName);
+    }
     ignoreProtoProps: [
       'constructor',
       'apply',

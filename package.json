@@ -2,7 +2,7 @@
   "name": "mixiner",
   "title": "JS & TS mixins",
   "description": "JS & TS mixins writed in TypeScript",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "dist/mixiner.js",
   "homepage": "https://github.com/shvabuk/mixiner",
   "author": {
