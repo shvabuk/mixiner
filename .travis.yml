@@ -16,7 +16,7 @@ script:
 sudo: false
 
 after_success:
-  npm run test:simple
+  npm test
 
 cache:
   directories:
