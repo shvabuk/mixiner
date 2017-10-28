@@ -30,6 +30,4 @@ package-lock.json
 
 /test/tmp
 /test/coverage
-/test/size
-!/test/size/README.md
 protected
