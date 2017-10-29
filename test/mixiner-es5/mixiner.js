@@ -42,9 +42,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     "use strict";
 
-    var VERSION = '1.0.0';
+    var VERSION = '1.0.4';
     // storage of mixins, defined in constructor._mixins_
-    /* export */
+
     var Mixins = function () {
         function Mixins() {
             _classCallCheck(this, Mixins);
@@ -209,7 +209,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return target;
     }
     // check mixin usage
-    /* export */function mixedBy(instance, mixin) {
+    function mixedBy(instance, mixin) {
         var ctor = getProto(instance).constructor;
         if (_typeof(ctor._mixins_) === 'object' && typeof ctor._mixins_.has === 'function') {
             return ctor._mixins_.has(mixin);
@@ -217,7 +217,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return false;
     }
     // check mixin usage and instanceof
-    /* export */function instanceOf(instance, mixin) {
+    function instanceOf(instance, mixin) {
         return mixedBy(instance, mixin) || instance instanceof mixin;
     }
     var define = function define(target, mixin, propertyName) {
@@ -247,8 +247,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
     };
     mixiner.default = mixiner; // set options for current mixining
-    /* export default mixiner; */
-    /* export */function options(options) {
+    function options(options) {
         var opts = assign(assign({}, mixiner.config), options);
         return {
             mix: function mix() {
@@ -268,7 +267,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         };
     }
     // extends parent with mixins implementation
-    /* export */function extend(parent) {
+    function extend(parent) {
         for (var _len4 = arguments.length, args = Array(_len4 > 1 ? _len4 - 1 : 0), _key4 = 1; _key4 < _len4; _key4++) {
             args[_key4 - 1] = arguments[_key4];
         }
@@ -276,7 +275,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return mixIn(mixiner.config, args, parent);
     }
     // mixins implementation
-    /* export */function mix() {
+    function mix() {
         for (var _len5 = arguments.length, args = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
             args[_key5] = arguments[_key5];
         }

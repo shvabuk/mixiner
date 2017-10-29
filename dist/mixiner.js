@@ -34,9 +34,9 @@
 })(typeof window !== 'undefined' ? window : this, () => {
 
 "use strict";
-const VERSION = '1.0.0';
+const VERSION = '1.0.4';
 // storage of mixins, defined in constructor._mixins_
-/* export */ class Mixins {
+class Mixins {
     constructor() {
         this.collection = [];
         this.VERSION = VERSION;
@@ -171,7 +171,7 @@ function mixIn(options, mixins, parent) {
     return target;
 }
 // check mixin usage
-/* export */ function mixedBy(instance, mixin) {
+function mixedBy(instance, mixin) {
     const ctor = getProto(instance).constructor;
     if (typeof ctor._mixins_ === 'object' && typeof ctor._mixins_.has === 'function') {
         return ctor._mixins_.has(mixin);
@@ -179,7 +179,7 @@ function mixIn(options, mixins, parent) {
     return false;
 }
 // check mixin usage and instanceof
-/* export */ function instanceOf(instance, mixin) {
+function instanceOf(instance, mixin) {
     return mixedBy(instance, mixin) || instance instanceof mixin;
 }
 const define = (target, mixin, propertyName) => {
@@ -224,8 +224,7 @@ const mixiner = {
     },
 };
 mixiner.default = mixiner; // set options for current mixining
-/* export default mixiner; */
-/* export */ function options(options) {
+function options(options) {
     const opts = assign(assign({}, mixiner.config), options);
     return {
         mix: function mix(...args) {
@@ -237,11 +236,11 @@ mixiner.default = mixiner; // set options for current mixining
     };
 }
 // extends parent with mixins implementation
-/* export */ function extend(parent, ...args) {
+function extend(parent, ...args) {
     return mixIn(mixiner.config, args, parent);
 }
 // mixins implementation
-/* export */ function mix(...args) {
+function mix(...args) {
     return mixIn(mixiner.config, args);
 }
 // internal method, used for resolving conflicts in global scope (browser window etc.)

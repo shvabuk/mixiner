@@ -96,10 +96,18 @@ gulp.task('es-modules', ['ts'], () => {
     )
     .pipe(replace(/^module.exports[^.].*/gm, `\n`))
     .pipe(replace(/^/, `${header}\n;`))
-    .pipe(gulp.dest('es'))
+    .pipe(gulp.dest('es'));
 });
 
-gulp.task('umd-fix', ['es-modules'], () => {
+gulp.task('dist-cleaning', ['es-modules'], () =>
+  gulp
+    .src('dist/mixiner.js')
+    .pipe(replace(/\/\*\s*export\s*\*\/[\s\r\n]*/gm, ''))
+    .pipe(replace(/\/\*\s*export\s*default\s*mixiner;\s*\*\/[\s\r\n]*/gm, ''))
+    .pipe(gulp.dest('dist'))
+);
+
+gulp.task('umd-fix', ['dist-cleaning'], () => {
   const header = fs.readFileSync('./src/header.txt', 'utf8');
   const umdBegin = fs.readFileSync('./src/umd-begin.txt', 'utf8');
   const umdEnd = fs.readFileSync('./src/umd-end.txt', 'utf8');

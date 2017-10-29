@@ -6,7 +6,7 @@
  */
 
 ;"use strict";
-const VERSION = '1.0.0';
+const VERSION = '1.0.4';
 // storage of mixins, defined in constructor._mixins_
 export class Mixins {
     constructor() {
