@@ -6,7 +6,7 @@
  */
 
 ;"use strict";
-const VERSION = '1.0.4';
+const VERSION = '1.0.5';
 // storage of mixins, defined in constructor._mixins_
 export class Mixins {
     constructor() {
@@ -104,19 +104,20 @@ function assign(target, source) {
 // during V8 engine optimization
 function mixIn(options, mixins, parent) {
     const len = mixins.length;
-    let i = -1;
     let target;
+    let i = -1;
     if (typeof parent === 'undefined') {
         target = class MixinsWrapper {
             constructor() {
-                mixins.forEach((mixin) => {
-                    // copy instance properties
-                    // mixins[i].apply(this) does not work in ES2015+ classes
-                    if (typeof mixin._mixinInstance_ === 'undefined') {
-                        mixin._mixinInstance_ = new mixin();
+                let j = -1;
+                // copy instance properties
+                // mixins[i].apply(this) does not work in ES2015+ classes
+                while (++j < len) {
+                    if (typeof mixins[j]._mixinInstance_ === 'undefined') {
+                        mixins[j]._mixinInstance_ = new mixins[j]();
                     }
-                    defineProps(this, mixin._mixinInstance_, options, 'instance');
-                });
+                    defineProps(this, mixins[j]._mixinInstance_, options, 'instance');
+                }
             }
         };
     }
@@ -125,14 +126,15 @@ function mixIn(options, mixins, parent) {
         target = class MixinsWrapper extends parent {
             constructor(...args) {
                 const out = super(...args);
+                let j = -1;
                 // copy instance properties
                 // mixins[i].apply(this) does not work in ES2015+ classes
-                mixins.forEach((mixin) => {
-                    if (typeof mixin._mixinInstance_ === 'undefined') {
-                        mixin._mixinInstance_ = new mixin();
+                while (++j < len) {
+                    if (typeof mixins[j]._mixinInstance_ === 'undefined') {
+                        mixins[j]._mixinInstance_ = new mixins[j]();
                     }
-                    defineProps(this, mixin._mixinInstance_, options, 'instance');
-                });
+                    defineProps(this, mixins[j]._mixinInstance_, options, 'instance');
+                }
                 return out;
             }
         };

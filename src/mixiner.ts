@@ -6,7 +6,7 @@
  */
 import * as interfaces from './interfaces';
 
-const VERSION = '1.0.4';
+const VERSION = '1.0.5';
 
 // storage of mixins, defined in constructor._mixins_
 /* export */ class Mixins implements interfaces.IMixins {
@@ -138,19 +138,20 @@ function mixIn<T extends interfaces.ICallable>(
   parent?: T
 ) {
   const len = mixins.length;
-  let i = -1;
   let target;
+  let i = -1;
   if (typeof parent === 'undefined') {
     target = class MixinsWrapper {
       constructor() {
-        mixins.forEach((mixin: interfaces.IMixClass) => {
-          // copy instance properties
-          // mixins[i].apply(this) does not work in ES2015+ classes
-          if (typeof mixin._mixinInstance_ === 'undefined') {
-            mixin._mixinInstance_ = new mixin();
+        let j = -1;
+        // copy instance properties
+        // mixins[i].apply(this) does not work in ES2015+ classes
+        while(++j < len) {
+          if (typeof mixins[j]._mixinInstance_ === 'undefined') {
+            mixins[j]._mixinInstance_ = new mixins[j]();
           }
-          defineProps(this, mixin._mixinInstance_, options, 'instance');
-        });
+          defineProps(this, mixins[j]._mixinInstance_, options, 'instance');
+        }
       }
     };
   } else {
@@ -159,15 +160,17 @@ function mixIn<T extends interfaces.ICallable>(
       constructor(...args: any[]) {
         const out: any = super(...args);
 
+        let j = -1;
+
         // copy instance properties
         // mixins[i].apply(this) does not work in ES2015+ classes
-        mixins.forEach((mixin: interfaces.IMixClass) => {
-          if (typeof mixin._mixinInstance_ === 'undefined') {
-            mixin._mixinInstance_ = new mixin();
+        while(++j < len) {
+          if (typeof mixins[j]._mixinInstance_ === 'undefined') {
+            mixins[j]._mixinInstance_ = new mixins[j]();
           }
 
-          defineProps(this, mixin._mixinInstance_, options, 'instance');
-        });
+          defineProps(this, mixins[j]._mixinInstance_, options, 'instance');
+        }
 
         return out;
       }

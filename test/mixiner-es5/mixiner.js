@@ -42,7 +42,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     "use strict";
 
-    var VERSION = '1.0.4';
+    var VERSION = '1.0.5';
     // storage of mixins, defined in constructor._mixins_
 
     var Mixins = function () {
@@ -155,22 +155,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     // during V8 engine optimization
     function mixIn(options, mixins, parent) {
         var len = mixins.length;
-        var i = -1;
         var target = void 0;
+        var i = -1;
         if (typeof parent === 'undefined') {
             target = function MixinsWrapper() {
-                var _this = this;
-
                 _classCallCheck(this, MixinsWrapper);
 
-                mixins.forEach(function (mixin) {
-                    // copy instance properties
-                    // mixins[i].apply(this) does not work in ES2015+ classes
-                    if (typeof mixin._mixinInstance_ === 'undefined') {
-                        mixin._mixinInstance_ = new mixin();
+                var j = -1;
+                // copy instance properties
+                // mixins[i].apply(this) does not work in ES2015+ classes
+                while (++j < len) {
+                    if (typeof mixins[j]._mixinInstance_ === 'undefined') {
+                        mixins[j]._mixinInstance_ = new mixins[j]();
                     }
-                    defineProps(_this, mixin._mixinInstance_, options, 'instance');
-                });
+                    defineProps(this, mixins[j]._mixinInstance_, options, 'instance');
+                }
             };
         } else {
             // ignore first mixin, it is parent class
@@ -180,7 +179,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 function MixinsWrapper() {
                     var _ref;
 
-                    var _this2, _ret;
+                    var _this, _ret;
 
                     _classCallCheck(this, MixinsWrapper);
 
@@ -188,16 +187,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         args[_key] = arguments[_key];
                     }
 
-                    var out = (_this2 = _possibleConstructorReturn(this, (_ref = MixinsWrapper.__proto__ || Object.getPrototypeOf(MixinsWrapper)).call.apply(_ref, [this].concat(args))), _this2);
+                    var out = (_this = _possibleConstructorReturn(this, (_ref = MixinsWrapper.__proto__ || Object.getPrototypeOf(MixinsWrapper)).call.apply(_ref, [this].concat(args))), _this);
+                    var j = -1;
                     // copy instance properties
                     // mixins[i].apply(this) does not work in ES2015+ classes
-                    mixins.forEach(function (mixin) {
-                        if (typeof mixin._mixinInstance_ === 'undefined') {
-                            mixin._mixinInstance_ = new mixin();
+                    while (++j < len) {
+                        if (typeof mixins[j]._mixinInstance_ === 'undefined') {
+                            mixins[j]._mixinInstance_ = new mixins[j]();
                         }
-                        defineProps(_this2, mixin._mixinInstance_, options, 'instance');
-                    });
-                    return _ret = out, _possibleConstructorReturn(_this2, _ret);
+                        defineProps(_this, mixins[j]._mixinInstance_, options, 'instance');
+                    }
+                    return _ret = out, _possibleConstructorReturn(_this, _ret);
                 }
 
                 return MixinsWrapper;
