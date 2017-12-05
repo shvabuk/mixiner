@@ -1,6 +1,6 @@
 # <span class="logo">[MIXINER](https://shvabuk.github.io/mixiner) </span>
 
-Mixiner is [fast](performance.md) and small javascript library.
+Mixiner is [fast](https://shvabuk.github.io/mixiner/docs/performance.html) and small javascript library.
 It makes possible to copy static and non static properties (and methods) from one class to other.
 
 [![Join the chat at https://gitter.im/soft-support/mixiner](https://img.shields.io/gitter/room/soft-support/mixiner.svg?style=flat-square)](https://gitter.im/soft-support/mixiner)
