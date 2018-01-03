@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>mixiner.extend() · Mixiner</title>
+        <title>mixiner()() · Mixiner</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -72,10 +72,8 @@ $(function() {
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="options.html" />
+    <link rel="next" href="version.html" />
     
-    
-    <link rel="prev" href="mix.html" />
     
 
     <link rel="shortcut icon" href="https://shvabuk.github.io/mixiner/assets/favicon.ico" type="image/x-icon">
@@ -141,19 +139,6 @@ $(function() {
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="../uml.html">
-            
-                <a href="../uml.html">
-            
-                    
-                    UML
-            
-                </a>
-            
-
-            
-        </li>
-    
 
     
         
@@ -175,12 +160,12 @@ $(function() {
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.1" data-path="mix.html">
+        <li class="chapter active" data-level="2.1.1" data-path="mixiner.html">
             
-                <a href="mix.html">
+                <a href="mixiner.html">
             
                     
-                    mixiner.mix()
+                    mixiner()()
             
                 </a>
             
@@ -188,77 +173,12 @@ $(function() {
             
         </li>
     
-        <li class="chapter active" data-level="2.1.2" data-path="extend.html">
+        <li class="chapter " data-level="2.1.2" data-path="version.html">
             
-                <a href="extend.html">
-            
-                    
-                    mixiner.extend()
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.3" data-path="options.html">
-            
-                <a href="options.html">
+                <a href="version.html">
             
                     
-                    mixiner.options()
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.4" data-path="mixed-by.html">
-            
-                <a href="mixed-by.html">
-            
-                    
-                    mixiner.mixedBy()
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.5" data-path="instance-of.html">
-            
-                <a href="instance-of.html">
-            
-                    
-                    mixiner.instanceOf()
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.6" data-path="mixins.html">
-            
-                <a href="mixins.html">
-            
-                    
-                    mixiner.Mixins
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.7" data-path="config.html">
-            
-                <a href="config.html">
-            
-                    
-                    mixiner.config
+                    mixiner.VERSION
             
                 </a>
             
@@ -302,7 +222,7 @@ $(function() {
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >mixiner.extend()</a>
+        <a href=".." >mixiner()()</a>
     </h1>
 </div>
 
@@ -317,67 +237,54 @@ $(function() {
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="mixinerextend">mixiner.extend()</h1>
-<p><strong>Description:</strong> Mixin method with extending parent class.</p>
+                                <h1 id="mixinermix">mixiner.mix()</h1>
+<p><strong>Description:</strong> Mixiner base method.</p>
 <hr>
 <blockquote>
-<pre><code class="lang-javascript">class MyClass extends mixiner.extend(ParentClass, mixin1[, mixin2[, ...[, mixinN]]]) {}
+<pre><code class="lang-javascript">const MyClass = mixiner(mixin1)(class MyClass {})
 </code></pre>
-<p><strong>ParentClass</strong><br>Type: Class
-A parent class</p>
-<hr>
-<p><strong>mixinN</strong><br>Type: Class
+<p><strong>mixin1</strong><br>Type: Class
 A mixin source class</p>
 <hr>
-<p>Return value<br>Type: <strong>Class</strong><br>Class MixinsWrapper, wrapper that contain mixins properties</p>
+<p>Return value<br>Type: <strong>Class</strong><br>Mixiner target class</p>
 </blockquote>
 <h4 id="examples-typescript">Examples TypeScript</h4>
-<pre><code class="lang-javascript">// create mixin
-class SpeackableMixin {
-    protected sound: string;
+<pre><code class="lang-javascript">class SpeackableMixin {
+    protected phrase: string;
     public speak(): string {
-        return this.sound;
-    }
-}
-// parent class
-class Animal {
-    public live: boolean = true;
-}
-// implement SpeackableMixin
-class Duck extends mixiner.extend(Animal, SpeackableMixin) {
-    protected sound = &apos;quack&apos;;
-}
-// create instance
-const donald = new Duck();
-// test instance
-donald.speak(); // &apos;quack&apos; without syntax error
-donald.live; // true
-</code></pre>
-<h4 id="examples-javascript">Examples JavaScript</h4>
-<pre><code class="lang-javascript">// create mixin
-class SpeackableMixin {
-    speak() {
-        return this.sound;
-    }
-}
-// parent class
-class Animal {
-    constructor() {
-        this.live = true;
+        return this.phrase;
     }
 }
 // implement SpeackableMixin
-class Duck extends mixiner.extend(Animal, SpeackableMixin) {
-    constructor() {
-        super();
-        this.sound = &apos;quack&apos;;
-    }
+@mixiner(SpeackableMixin)
+class Duck {
+    protected phrase = &apos;quack&apos;;
+    public speak: () =&gt; string;
 }
 // create instance
 const donald = new Duck();
 // test instance
 donald.speak(); // &apos;quack&apos;
-donald.live; // true
+</code></pre>
+<h4 id="examples-javascript">Examples JavaScript</h4>
+<pre><code class="lang-javascript">// create mixin
+class SpeackableMixin {
+    speak() {
+        return this.phrase;
+    }
+}
+// implement SpeackableMixin
+const Duck = mixiner(SpeackableMixin)(class Duck {
+    constructor() {
+        super();
+        this.phrase = &apos;quack&apos;;
+    }
+});
+
+// create instance
+const donald = new Duck();
+// test instance
+donald.speak(); // &apos;quack&apos;
 </code></pre>
 
                                 
@@ -406,12 +313,8 @@ donald.live; // true
 
             
                 
-                <a href="mix.html" class="navigation navigation-prev " aria-label="Previous page: mixiner.mix()">
-                    <i class="fa fa-angle-left"></i>
-                </a>
                 
-                
-                <a href="options.html" class="navigation navigation-next " aria-label="Next page: mixiner.options()">
+                <a href="version.html" class="navigation navigation-next navigation-unique" aria-label="Next page: mixiner.VERSION">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -422,7 +325,7 @@ donald.live; // true
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"mixiner.extend()","level":"2.1.2","depth":2,"next":{"title":"mixiner.options()","level":"2.1.3","depth":2,"path":"api/options.md","ref":"api/options.md","articles":[]},"previous":{"title":"mixiner.mix()","level":"2.1.1","depth":2,"path":"api/mix.md","ref":"api/mix.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-highlight","-livereload","github","anchorjs","ga","edit-link","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/shvabuk/mixiner"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"ga":{"configuration":"auto","token":"UA-26894117-2"},"sharing":{"facebook":true,"twitter":true,"google":true,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper","vk"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/shvabuk/mixiner/tree/gh-pages/_docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchorjs":{}},"theme":"default","author":"Shvab Ostap","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Mixiner","gitbook":"3.2.3"},"file":{"path":"api/extend.md","mtime":"2017-10-28T21:16:42.629Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-28T21:23:04.477Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"mixiner()()","level":"2.1.1","depth":2,"next":{"title":"mixiner.VERSION","level":"2.1.2","depth":2,"path":"api/version.md","ref":"api/version.md","articles":[]},"previous":{"title":"API","level":"2.1","depth":1,"ref":"","articles":[{"title":"mixiner()()","level":"2.1.1","depth":2,"path":"api/mixiner.md","ref":"api/mixiner.md","articles":[]},{"title":"mixiner.VERSION","level":"2.1.2","depth":2,"path":"api/version.md","ref":"api/version.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["theme-default","-highlight","-livereload","github","anchorjs","ga","edit-link","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/shvabuk/mixiner"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"ga":{"configuration":"auto","token":"UA-26894117-2"},"sharing":{"facebook":true,"twitter":true,"google":true,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper","vk"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/shvabuk/mixiner/tree/gh-pages/_docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchorjs":{}},"theme":"default","author":"Shvab Ostap","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Mixiner","gitbook":"3.2.3"},"file":{"path":"api/mixiner.md","mtime":"2018-01-03T14:11:07.921Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-03T14:19:03.610Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

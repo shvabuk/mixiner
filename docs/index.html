@@ -139,19 +139,6 @@ $(function() {
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="uml.html">
-            
-                <a href="uml.html">
-            
-                    
-                    UML
-            
-                </a>
-            
-
-            
-        </li>
-    
 
     
         
@@ -173,12 +160,12 @@ $(function() {
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.1" data-path="api/mix.html">
+        <li class="chapter " data-level="2.1.1" data-path="api/mixiner.html">
             
-                <a href="api/mix.html">
+                <a href="api/mixiner.html">
             
                     
-                    mixiner.mix()
+                    mixiner()()
             
                 </a>
             
@@ -186,77 +173,12 @@ $(function() {
             
         </li>
     
-        <li class="chapter " data-level="2.1.2" data-path="api/extend.html">
+        <li class="chapter " data-level="2.1.2" data-path="api/version.html">
             
-                <a href="api/extend.html">
-            
-                    
-                    mixiner.extend()
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.3" data-path="api/options.html">
-            
-                <a href="api/options.html">
+                <a href="api/version.html">
             
                     
-                    mixiner.options()
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.4" data-path="api/mixed-by.html">
-            
-                <a href="api/mixed-by.html">
-            
-                    
-                    mixiner.mixedBy()
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.5" data-path="api/instance-of.html">
-            
-                <a href="api/instance-of.html">
-            
-                    
-                    mixiner.instanceOf()
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.6" data-path="api/mixins.html">
-            
-                <a href="api/mixins.html">
-            
-                    
-                    mixiner.Mixins
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="2.1.7" data-path="api/config.html">
-            
-                <a href="api/config.html">
-            
-                    
-                    mixiner.config
+                    mixiner.VERSION
             
                 </a>
             
@@ -316,8 +238,7 @@ $(function() {
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="mixiner-"><span class="logo"><a href="https://shvabuk.github.io/mixiner" target="_blank">MIXINER</a> </span></h1>
-<p>Mixiner is <a href="https://shvabuk.github.io/mixiner/docs/performance.html">fast</a> and small javascript library.
-It makes possible to copy static and non static properties (and methods) from one class to other.</p>
+<p>Mixiner is <a href="https://github.com/shvabuk/mixiner/blob/gh-pages/_docs/performance.md" target="_blank">fast</a> and small javascript library, that implement mixins in TypeScript or JavaScript classes.</p>
 <p><a href="https://gitter.im/soft-support/mixiner" target="_blank"><img src="https://img.shields.io/gitter/room/soft-support/mixiner.svg?style=flat-square" alt="Join the chat at https://gitter.im/soft-support/mixiner"></a>
 <a href="https://www.npmjs.com/package/mixiner" target="_blank"><img src="https://img.shields.io/npm/v/mixiner.svg?style=flat-square" alt="npm version"></a>
 <a href="https://codecov.io/gh/shvabuk/mixiner" target="_blank"><img src="https://codecov.io/gh/shvabuk/mixiner/branch/master/graph/badge.svg" alt="codecov"></a>
@@ -325,34 +246,37 @@ It makes possible to copy static and non static properties (and methods) from on
 <h2 id="basic-typescript-usage">Basic TypeScript usage</h2>
 <pre><code class="lang-javascript">// create mixin
 class SpeackableMixin {
-    protected sound: string;
+    protected phrase: string;
     public speak(): string {
-        return this.sound;
+        return this.phrase;
     }
 }
 // implement SpeackableMixin
-class Duck extends mixiner.mix(SpeackableMixin) {
-    protected sound = &apos;quack&apos;;
+@mixiner(SpeackableMixin)
+class Duck {
+    protected phrase = &apos;quack&apos;;
+    public speak: () =&gt; string;
 }
 // create instance
 const donald = new Duck();
 // test instance
-donald.speak(); // &apos;quack&apos; without syntax error
+donald.speak(); // &apos;quack&apos;
 </code></pre>
 <h2 id="basic-js-usage">Basic JS usage</h2>
 <pre><code class="lang-javascript">// create mixin
 class SpeackableMixin {
     speak() {
-        return this.sound;
+        return this.phrase;
     }
 }
 // implement SpeackableMixin
-class Duck extends mixiner.mix(SpeackableMixin) {
+const Duck = mixiner(SpeackableMixin)(class Duck {
     constructor() {
         super();
-        this.sound = &apos;quack&apos;;
+        this.phrase = &apos;quack&apos;;
     }
-}
+});
+
 // create instance
 const donald = new Duck();
 // test instance
@@ -360,8 +284,7 @@ donald.speak(); // &apos;quack&apos;
 </code></pre>
 <h2 id="download">Download</h2>
 <ul>
-<li><i class="fa fa-download" aria-hidden="true"></i> <a href="https://raw.githubusercontent.com/shvabuk/mixiner/master/dist/mixiner.js" target="_blank">Main build</a> (<a href="https://raw.githubusercontent.com/shvabuk/mixiner/master/dist/mixiner.min.js" target="_blank">~1.3kB gzipped</a>)</li>
-<li><i class="fa fa-download" aria-hidden="true"></i> <a href="https://raw.githubusercontent.com/shvabuk/mixiner/master/es/mixiner.js" target="_blank">ES2015 modules build</a> (<a href="https://raw.githubusercontent.com/shvabuk/mixiner/master/es/mixiner.min.js" target="_blank">~1.2kB gzipped</a>)</li>
+<li><i class="fa fa-download" aria-hidden="true"></i> <a href="https://raw.githubusercontent.com/shvabuk/mixiner/master/dist/mixiner.js" target="_blank">Main build</a> (<a href="https://raw.githubusercontent.com/shvabuk/mixiner/master/dist/mixiner.min.js" target="_blank">~1kB gzipped</a>)</li>
 <li><i class="fa fa-cloud-download" aria-hidden="true"></i> <a href="https://cdn.jsdelivr.net/npm/mixiner" target="_blank">CDN jsdelivr</a></li>
 <li><i class="fa fa-cloud-download" aria-hidden="true"></i> <a href="https://unpkg.com/mixiner/dist/mixiner.js" target="_blank">CDN unpkg</a></li>
 </ul>
@@ -375,88 +298,17 @@ donald.speak(); // &apos;quack&apos;
 <p>Node.js / CommonJS:</p>
 <pre><code class="lang-javascript">const mixiner = require(&apos;mixiner&apos;);
 </code></pre>
-<p>ES2015 / TypeScript:</p>
-<pre><code class="lang-javascript">import mixiner from &apos;mixiner/es/mixiner&apos;;
-</code></pre>
-<h2 id="comparison">Comparison</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Method</th>
-<th style="text-align:left">Copy instance properties</th>
-<th style="text-align:left">Copy prototype properties</th>
-<th style="text-align:left">Copy static properties</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Mixiner.mix</td>
-<td style="text-align:left">+</td>
-<td style="text-align:left">+</td>
-<td style="text-align:left">+</td>
-</tr>
-<tr>
-<td style="text-align:left">Vue.extend with mixin</td>
-<td style="text-align:left">+</td>
-<td style="text-align:left">+</td>
-<td style="text-align:left">-</td>
-</tr>
-<tr>
-<td style="text-align:left">Lodash.mixin</td>
-<td style="text-align:left">-*</td>
-<td style="text-align:left">+</td>
-<td style="text-align:left">-</td>
-</tr>
-</tbody>
-</table>
-<p>* Without creating instance of mixins</p>
-<h2 id="configuration">Configuration</h2>
-<pre><code class="lang-javascript">// default configuration
-interf.
-  config: {
-    define: (target, mixin, propertyName) =&gt; {
-      Object.defineProperty(
-        target,
-        propertyName,
-        Object.getOwnPropertyDescriptor(mixin, propertyName)
-      );
-    },
-    resolve: ({ target, mixin, options, type, propertyName }) =&gt; {
-      mixiner.config.define(target, mixin, propertyName);
-    }
-    ignoreProtoProps: [
-      &apos;constructor&apos;,
-      &apos;apply&apos;,
-      &apos;bind&apos;,
-      &apos;call&apos;,
-      &apos;isGenerator&apos;,
-      &apos;toSource&apos;,
-      &apos;toString&apos;,
-      &apos;__proto__&apos;,
-    ],
-    ignoreStaticProps: [
-      &apos;arguments&apos;,
-      &apos;arity&apos;,
-      &apos;caller&apos;,
-      &apos;length&apos;,
-      &apos;name&apos;,
-      &apos;displayName&apos;,
-      &apos;prototype&apos;,
-      &apos;__proto__&apos;,
-      &apos;_mixinInstance_&apos;,
-    ],
-    ignoreThisProps: [&apos;__proto__&apos;],
-  };
-</code></pre>
 <h2 id="support">Support</h2>
+<ul>
+<li><i class="fa fa-chrome" aria-hidden="true"></i> Chrome</li>
+<li><i class="fa fa-firefox" aria-hidden="true"></i> Firefox</li>
+<li><i class="fa fa-safari" aria-hidden="true"></i> Safari</li>
+<li><i class="fa fa-edge" aria-hidden="true"></i> Edge</li>
+<li><i class="fa fa-internet-explorer" aria-hidden="true"></i> IE 9-11</li>
+</ul>
 <p>Tested in:</p>
 <ul>
-<li><i class="fa fa-chrome" aria-hidden="true"></i> Chrome 62 - 63</li>
-<li><i class="fa fa-firefox" aria-hidden="true"></i> Firefox 56</li>
-<li><i class="fa fa-internet-explorer" aria-hidden="true"></i> IE 11 (with babel transform)</li>
-<li><i class="fa fa-safari" aria-hidden="true"></i> Safari 5.1.7 (with babel transform)</li>
 <li><i class="fa fa-server" aria-hidden="true"></i> Node.js 8</li>
-<li><i class="fa fa-server" aria-hidden="true"></i> PhantomJS 2.1.14 (with babel transform)</li>
 </ul>
 <h2 id="license">License</h2>
 <p>Mixiner is released under the <a href="https://raw.githubusercontent.com/shvabuk/mixiner/master/LICENSE.txt" target="_blank">MIT license</a></p>
@@ -499,7 +351,7 @@ interf.
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Read Me","level":"1.1","depth":1,"next":{"title":"Performance","level":"1.2","depth":1,"path":"performance.md","ref":"performance.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-highlight","-livereload","github","anchorjs","ga","edit-link","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/shvabuk/mixiner"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"ga":{"configuration":"auto","token":"UA-26894117-2"},"sharing":{"facebook":true,"twitter":true,"google":true,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper","vk"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/shvabuk/mixiner/tree/gh-pages/_docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchorjs":{}},"theme":"default","author":"Shvab Ostap","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Mixiner","gitbook":"3.2.3"},"file":{"path":"README.md","mtime":"2017-10-28T21:17:16.608Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2017-10-28T21:23:04.477Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Read Me","level":"1.1","depth":1,"next":{"title":"Performance","level":"1.2","depth":1,"path":"performance.md","ref":"performance.md","articles":[]},"dir":"ltr"},"config":{"plugins":["theme-default","-highlight","-livereload","github","anchorjs","ga","edit-link","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"github":{"url":"https://github.com/shvabuk/mixiner"},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"ga":{"configuration":"auto","token":"UA-26894117-2"},"sharing":{"facebook":true,"twitter":true,"google":true,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper","vk"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/shvabuk/mixiner/tree/gh-pages/_docs"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"anchorjs":{}},"theme":"default","author":"Shvab Ostap","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Mixiner","gitbook":"3.2.3"},"file":{"path":"README.md","mtime":"2018-01-03T14:04:04.774Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-01-03T14:19:03.610Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>
