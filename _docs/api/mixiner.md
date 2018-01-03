@@ -1,13 +1,13 @@
 # mixiner.mix\(\)
 
-**Description:** Mixin method.
+**Description:** Mixiner base method.
 
 ---
 > ```javascript
-> class MyClass extends mixiner.mix(mixin1[, mixin2[, ...[, mixinN]]]) {}
+> const MyClass = mixiner(mixin1)(class MyClass {})
 > ```
 > 
-> **mixinN**  
+> **mixin1**  
 > Type: Class
 > A mixin source class
 > 
@@ -15,27 +15,28 @@
 > 
 > Return value  
 > Type: **Class**  
-> Class MixinsWrapper, wrapper that contain mixins properties
+> Mixiner target class
 > 
 
 #### Examples TypeScript
 
 ```javascript
-// create mixin
 class SpeackableMixin {
-    protected sound: string;
+    protected phrase: string;
     public speak(): string {
-        return this.sound;
+        return this.phrase;
     }
 }
 // implement SpeackableMixin
-class Duck extends mixiner.mix(SpeackableMixin) {
-    protected sound = 'quack';
+@mixiner(SpeackableMixin)
+class Duck {
+    protected phrase = 'quack';
+    public speak: () => string;
 }
 // create instance
 const donald = new Duck();
 // test instance
-donald.speak(); // 'quack' without syntax error
+donald.speak(); // 'quack'
 ```
 
 #### Examples JavaScript
@@ -44,16 +45,17 @@ donald.speak(); // 'quack' without syntax error
 // create mixin
 class SpeackableMixin {
     speak() {
-        return this.sound;
+        return this.phrase;
     }
 }
 // implement SpeackableMixin
-class Duck extends mixiner.mix(SpeackableMixin) {
+const Duck = mixiner(SpeackableMixin)(class Duck {
     constructor() {
         super();
-        this.sound = 'quack';
+        this.phrase = 'quack';
     }
-}
+});
+
 // create instance
 const donald = new Duck();
 // test instance
