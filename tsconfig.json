@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
     "outDir": "./dist/",
     "allowUnreachableCode": false,
     "allowJs": true,
     "declaration": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "lib": ["ES2015"],
-    "module": "CommonJS",
+    "module": "UMD",
     "moduleResolution": "Node",
     "noImplicitAny": true,
     "noUnusedLocals": true,

@@ -42,17 +42,20 @@ class Parent {
   }
 }
 
-export class ClassExtend extends mixiner.extend(Parent, Mixin1, Mixin2) {
+@mixiner(Mixin2)
+@mixiner(Mixin1)
+export class ClassExtend extends Parent {
+  public method: () => boolean;
+  public method1: () => number;
+  public method2: () => number;
   public childProp = 'child';
 }
 
-export class ClassMix extends mixiner.mix(Mixin1, Mixin2) {
-  public childProp = 'child';
-}
-export class ClassOptionsExtend extends mixiner.options({}).extend(Parent, Mixin1, Mixin2) {
-  public childProp = 'child';
-}
-
-export class ClassOptionsMix extends mixiner.options({}).mix(Mixin1, Mixin2) {
+@mixiner(Mixin2)
+@mixiner(Mixin1)
+export class ClassMix {
+  public method: () => boolean;
+  public method1: () => number;
+  public method2: () => number;
   public childProp = 'child';
 }

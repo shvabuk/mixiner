@@ -9,6 +9,12 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 exports.__esModule = true;
 var mixiner = require("../../dist/mixiner");
 var Mixin1 = /** @class */ (function () {
@@ -56,36 +62,21 @@ var ClassExtend = /** @class */ (function (_super) {
         _this.childProp = 'child';
         return _this;
     }
+    ClassExtend = __decorate([
+        mixiner(Mixin2),
+        mixiner(Mixin1)
+    ], ClassExtend);
     return ClassExtend;
-}(mixiner.extend(Parent, Mixin1, Mixin2)));
+}(Parent));
 exports.ClassExtend = ClassExtend;
-var ClassMix = /** @class */ (function (_super) {
-    __extends(ClassMix, _super);
+var ClassMix = /** @class */ (function () {
     function ClassMix() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.childProp = 'child';
-        return _this;
+        this.childProp = 'child';
     }
+    ClassMix = __decorate([
+        mixiner(Mixin2),
+        mixiner(Mixin1)
+    ], ClassMix);
     return ClassMix;
-}(mixiner.mix(Mixin1, Mixin2)));
+}());
 exports.ClassMix = ClassMix;
-var ClassOptionsExtend = /** @class */ (function (_super) {
-    __extends(ClassOptionsExtend, _super);
-    function ClassOptionsExtend() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.childProp = 'child';
-        return _this;
-    }
-    return ClassOptionsExtend;
-}(mixiner.options({}).extend(Parent, Mixin1, Mixin2)));
-exports.ClassOptionsExtend = ClassOptionsExtend;
-var ClassOptionsMix = /** @class */ (function (_super) {
-    __extends(ClassOptionsMix, _super);
-    function ClassOptionsMix() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.childProp = 'child';
-        return _this;
-    }
-    return ClassOptionsMix;
-}(mixiner.options({}).mix(Mixin1, Mixin2)));
-exports.ClassOptionsMix = ClassOptionsMix;

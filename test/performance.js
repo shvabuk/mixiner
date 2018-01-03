@@ -289,7 +289,7 @@ suite
 
     class MyHelloWorld {
       constructor() {
-        cloneProperties(this, Hello);
+        this.helloProperty = true;
       }
       say() {
         if (this.helloProperty) {
@@ -348,13 +348,19 @@ suite
       }
     }
 
-    class MyHelloWorld extends mixiner.mix(Hello, World) {
+    class MyHelloWorld {
+      constructor() {
+        this.helloProperty = true;
+      }
       say() {
         if (this.helloProperty) {
           return `${this.hello()} ${this.world()}`;
         }
       }
     }
+
+    mixiner(Hello)(MyHelloWorld);
+    mixiner(World)(MyHelloWorld);
   })
   // add listeners
   .on('cycle', event => {
@@ -565,13 +571,20 @@ class WrapperAgregation extends WrapperAgr {
   }
 }
 
-class Mixiner extends mixiner.mix(Hello, World) {
+class Mixiner {
+  constructor() {
+    this.helloProperty = true;
+  }
   say() {
     if (this.helloProperty) {
       return `${this.hello()} ${this.world()}`;
     }
   }
 }
+
+mixiner(Hello)(Mixiner);
+mixiner(World)(Mixiner);
+
 
 const suiteObj = new Benchmark.Suite();
 

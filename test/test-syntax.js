@@ -13,15 +13,15 @@ describe('TypeScript syntax', () => {
         `node ${path.resolve(
           __dirname,
           '../node_modules/typescript/bin/tsc'
-        )} --diagnostics ${path.resolve(__dirname, './syntax/errors.ts')}`,
+        )} --diagnostics ${path.resolve(__dirname, './syntax/errors.ts')} --experimentalDecorators`,
         {
           encoding: 'utf8',
           stdio: 'ignore',
         },
         (e, output) => {
           assert.notEqual(null, e);
-          assert.strictEqual(24, getErrors(output).length);
-          assert.strictEqual(12, getNone(output).length);
+          assert.strictEqual(36, getErrors(output).length);
+          assert.strictEqual(6, getNone(output).length);
           done();
         }
       );
@@ -34,8 +34,8 @@ describe('TypeScript syntax', () => {
       const correct = child_process.exec(
         `node ${path.resolve(
           __dirname,
-          '../node_modules/typescript/bin/tsc'
-        )} --diagnostics ${path.resolve(__dirname, './syntax/correct.ts')}`,
+          '../node_modules/typescript/bin/tsc' 
+        )} --diagnostics ${path.resolve(__dirname, './syntax/correct.ts')} --experimentalDecorators`,
         {
           encoding: 'utf8',
           stdio: 'ignore',
