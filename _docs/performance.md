@@ -15,5 +15,5 @@ It was created [performance test](https://raw.githubusercontent.com/shvabuk/mixi
 | Method | Class declaration | Object creation | Object method 'say' usage |
 | :--- | :--- | :--- | :--- |
 | Lodash.mixin | 68 779 ops/sec | 675 996 ops/sec | 374 812 626 ops/sec |
-| Mixiner.mix | 21 767 ops/sec | 23 921 ops/sec | 4 653 675 ops/sec |
-| Vue.extend with mixin | 27 771 ops/sec | 23 294 ops/sec | 377 812 761 ops/sec |
+| Mixiner.mix | 21 767 ops/sec | 23 921 ops/sec | 377 653 675 ops/sec |
+| Vue.extend with mixin | 27 771 ops/sec | 23 294 ops/sec | 4 812 761 ops/sec |
