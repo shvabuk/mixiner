@@ -7,6 +7,10 @@ Mixiner is [fast](https://github.com/shvabuk/mixiner/blob/gh-pages/_docs/perform
 [![codecov](https://codecov.io/gh/shvabuk/mixiner/branch/master/graph/badge.svg)](https://codecov.io/gh/shvabuk/mixiner)
 [![Build Status](https://travis-ci.org/shvabuk/mixiner.svg?branch=master)](https://travis-ci.org/shvabuk/mixiner)
 
+## Deprecated
+
+This package has been deprecated.
+
 ## Basic TypeScript usage
 ``` javascript
 // create mixin
